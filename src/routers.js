@@ -16,6 +16,4 @@ routes.get('/botoesCentrais', espController.botoesCentrais);
 
 routes.get('/selecionaCentral', espController.selecionaCentral);
 
-routes.post('/ligar', espController.ligarCentral);
-
 module.exports = routes;

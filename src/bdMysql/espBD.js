@@ -1,12 +1,25 @@
 const connection = require('../models/connectionMYSQL');
-const temporizador = require('../models/temporizador');
+const sqlInsertLigado = "insert into log_ligado values(default, ?, ?, ?, ?)";
+const sqlInsertDesigado = "insert into log_desligado values(default, ?, ?, ?, ?)";
 
 module.exports = {
-    consumo: function(res, modo){
-        if(modo == 'true'){
-            console.log(modo);
-        } else {
-            console.log(modo);            
-        }   
-    }
+    consumoLigado: function(id, data_ligado, horario_ligado, ip, res){
+        connection.query(sqlInsertLigado, [id, data_ligado, horario_ligado, ip], (err, results)=>{
+            if(err){
+                res.json(err);
+            } else {
+                res.json(true);
+            }
+        });
+    },
+
+    consumoDesligado: function(id, data_desligado, horario_desligado, ip, res){
+        connection.query(sqlInsertDesigado, [id, data_desligado, horario_desligado, ip], (err, results)=>{
+            if(err){
+                res.json(err);
+            } else {
+                res.json(false);
+            }
+        });
+    },
 }
