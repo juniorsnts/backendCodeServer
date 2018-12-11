@@ -33,7 +33,11 @@ module.exports = {
     async cadastroCentral(req, res){
         let nome_central = await req.body.nome_central;
         espBD.cadastroCentral(nome_central, res);
-    }
-    
+    },
+
+    ultimoEstado(req, res){
+        let id = req.query.id;
+        espBD.recuperarUltimoEstado(id, res);
+    }    
     
 }

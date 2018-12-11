@@ -9,10 +9,11 @@ function ligarCentral(id_central, modoForEsp, resp, request){
     const options = {
         hostname: 'postb.in',
         port: 443,
-        path: '/lwEtAXpJ',
+        path: '/5idqCIjS',
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Content-Length': data.length
         }                        
     }
     const req = https.request(options, (res)=>{

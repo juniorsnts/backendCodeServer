@@ -18,4 +18,6 @@ routes.get('/botoesCentrais', espController.botoesCentrais); // botoes com o nom
 
 routes.get('/selecionaCentral', espController.selecionaCentral); // seleciona a central com seus dados
 
+routes.get('/ultimoEstado', espController.ultimoEstado);
+
 module.exports = routes;
