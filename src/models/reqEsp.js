@@ -1,4 +1,4 @@
-const https = require('https');
+const http = require('https');
 const formData = require('../models/tempo');
 const espBD = require('../bdMysql/espBD');
 function ligarCentral(id_central, modoForEsp, resp, request){
@@ -16,7 +16,7 @@ function ligarCentral(id_central, modoForEsp, resp, request){
             'Content-Length': data.length
         }                        
     }
-    const req = https.request(options, (res)=>{
+    const req = http.request(options, (res)=>{
         if(res.statusCode == 200){
             if(modoForEsp == 1){
                 request.io.emit('status', true); //enviando via socket
