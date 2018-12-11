@@ -1,5 +1,6 @@
 const connection = require('../models/connectionMYSQL');
 const insertLog = "insert into log values (default, ?, ?, ?, ?)";
+const selectLog = "select *from log where id_central_fk = ?";
 const sqlUpdateEstado = "update estados_centrais set estado = ? where id_central_fk = ?";
 const sqlUltimoEstado = "select estado from estados_centrais where id_estado=?";
 const insertCentral = "insert into centrais values (default, ?)";
@@ -13,6 +14,16 @@ module.exports = {
                 res.json(err);
             } else {
 
+            }
+        })
+    },
+
+    selectLog: function(id_central, res){
+        connection.query(selectLog, [id_central], (err, results)=>{
+            if(err){
+                res.json(err);
+            } else {
+                res.json(results);
             }
         })
     },
