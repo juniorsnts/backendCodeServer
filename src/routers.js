@@ -6,14 +6,16 @@ const authController = require('./controlers/authController');
 
 const espController = require('./controlers/espController');
 
-routes.post('/login', authController.loginUser);
+routes.post('/login', authController.loginUser); // login usuario
 
-routes.post('/cadastro', authController.cadastroUser);
+routes.post('/cadastro', authController.cadastroUser); // cadastro usuario
 
-routes.get('/ligaDesliga', espController.ligaDesliga);
+routes.post('/cadastrar-central', espController.cadastroCentral); // cadastro de centrais
 
-routes.get('/botoesCentrais', espController.botoesCentrais);
+routes.get('/ligaDesliga', espController.ligaDesliga); // ligar ou desligar central
 
-routes.get('/selecionaCentral', espController.selecionaCentral);
+routes.get('/botoesCentrais', espController.botoesCentrais); // botoes com o nome das centrais
+
+routes.get('/selecionaCentral', espController.selecionaCentral); // seleciona a central com seus dados
 
 module.exports = routes;
