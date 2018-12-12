@@ -1,9 +1,10 @@
 const connection = require('../models/connectionMYSQL');
+const difHora = require('../models/difHora');
 const insertLog = "insert into log values (default, ?, ?, ?, ?)";
 const selectLog = "select *from log where id_central_fk = ?";
 const sqlUpdateEstado = "update estados_centrais set estado = ? where id_central_fk = ?";
 const sqlUltimoEstado = "select estado from estados_centrais where id_estado=?";
-const insertCentral = "insert into centrais values (default, ?)";
+const insertCentral = "insert into centrais values (default, ?, ?)";
 const insertEstadoCentral = "insert into estados_centrais values (default, ? , 'null')";
 
 module.exports = {
@@ -23,7 +24,8 @@ module.exports = {
             if(err){
                 res.json(err);
             } else {
-                res.json(results);
+                //res.json(results);
+                difHora(results,res);
             }
         })
     },
@@ -48,8 +50,8 @@ module.exports = {
         });
     },
 
-    cadastroCentral(nome_central, res){
-        connection.query(insertCentral, [nome_central], (err, results)=>{
+    cadastroCentral(nome_central, potencia_central, res){
+        connection.query(insertCentral, [nome_central, potencia_central], (err, results)=>{
             if(err){
                 res.json(err);
             } else{

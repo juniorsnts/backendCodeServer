@@ -1,4 +1,4 @@
-const http = require('https');
+const http = require('http');
 const formData = require('../models/tempo');
 const espBD = require('../bdMysql/espBD');
 function ligarCentral(id_central, modoForEsp, resp, request){
@@ -7,9 +7,9 @@ function ligarCentral(id_central, modoForEsp, resp, request){
         modo: modoForEsp
     });
     const options = {
-        hostname: 'postb.in',
-        port: 443,
-        path: '/5idqCIjS',
+        hostname: '192.168.2.140',
+        port: 80,
+        path: '/ligar',
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

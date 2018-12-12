@@ -26,18 +26,18 @@ module.exports = {
 
     async selecionaCentral(req, res){
         let id = await req.query.id;
-        //espBD.recuperarUltimoEstado(id, res);
         espBD.selectLog(id, res);
     },
 
     async cadastroCentral(req, res){
         let nome_central = await req.body.nome_central;
-        espBD.cadastroCentral(nome_central, res);
+        let potencia_central = await req.body.potencia_central;
+        espBD.cadastroCentral(nome_central, potencia_central, res);
     },
 
     ultimoEstado(req, res){
         let id = req.query.id;
         espBD.recuperarUltimoEstado(id, res);
-    }    
+    },   
     
 }

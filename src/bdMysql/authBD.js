@@ -1,5 +1,5 @@
 const connection = require('../models/connectionMYSQL');
-
+const jwtAuthentication = require('../models/jwt');
 const loginUser = "select email, senha from usuarios where email=? and senha=?";
 const buscaEmail = "select email from usuarios where email = ?";
 const sqlCadastro = "INSERT INTO usuarios VALUES (default,?,?)";
@@ -13,7 +13,11 @@ module.exports = {
             }
             if(results.length == 1){
                 console.log('Logado');
-                res.json(true);
+                //res.json(true, token);
+                res.json({
+                    estado: true,
+                    token: jwtAuthentication.jwtAuthentication(email)
+                });
             } else {
                 console.log('Nao cadastrado');
                 res.json(false);
@@ -37,7 +41,10 @@ module.exports = {
                         res.json(error);
                     } else{
                         console.log("Usuario novo cadastrado");
-                        res.json(true);
+                        res.json({
+                            estado: true,
+                            token: jwtAuthentication.jwtAuthentication(email)
+                        });
                     }
                 });
             }
