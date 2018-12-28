@@ -7,7 +7,7 @@ function ligarCentral(id_central, modoForEsp, resp, request){
         modo: modoForEsp
     });
     const options = {
-        hostname: '192.168.2.140',
+        hostname: '192.168.43.115',
         port: 80,
         path: '/ligar',
         method: 'POST',

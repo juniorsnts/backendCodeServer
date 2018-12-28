@@ -26,6 +26,10 @@ module.exports = {
             req.userId = decoded.id;
             next();
         });
+    },
+
+    loginAutomatico(req, res){
+        return res.json(200);
     }
 
 }

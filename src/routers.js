@@ -21,4 +21,6 @@ routes.get('/selecionaCentral', authController.verificaJWT, espController.seleci
 
 routes.get('/ultimoEstado', authController.verificaJWT, espController.ultimoEstado);
 
+routes.get('/verificaLogin', authController.verificaJWT, authController.loginAutomatico);
+
 module.exports = routes;
